@@ -2,16 +2,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: rustdesk-server
-  namespace: argocd  # This must be the namespace where Argo CD is installed
+  namespace: argocd  # The namespace where ArgoCD is installed
 spec:
-  project: rustdesk-server  # This project must exist in Argo CD
+  project: rustdesk
   source:
-    repoURL: https://github.com/playground506/k8s-services
-    path: rustdesk-server
-    targetRevision: HEAD
+    repoURL: 'https://github.com/playground506/k8s-services'  # Replace with your GitHub repo URL
+    path: 'k8s'  # The directory in your repo where Kubernetes manifests are located
+    targetRevision: HEAD  # Or specify a branch/tag
   destination:
-    server: https://kubernetes.default.svc
-    namespace: rustdesk-server
+    server: 'https://kubernetes.default.svc'  # In-cluster deployment
+    namespace: rustdesk  # The namespace where to deploy RustDesk
   syncPolicy:
     automated:
       prune: true

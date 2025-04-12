@@ -5,7 +5,7 @@ metadata:
   labels:
     app: rustdesk-server
 spec:
-  type: ClusterIP  # You might want to use NodePort or ClusterIP depending on your setup
+  type: ClusterIP  # Change as needed
   ports:
   - port: 21115
     targetPort: 21115

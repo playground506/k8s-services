@@ -4,7 +4,7 @@ metadata:
   name: rustdesk-server
   namespace: argocd  # The namespace where ArgoCD is installed
 spec:
-  project: default
+  project: rustdesk
   source:
     repoURL: 'https://github.com/playground506/k8s-services'  # Replace with your GitHub repo URL
     path: 'k8s'  # The directory in your repo where Kubernetes manifests are located
