@@ -7,7 +7,7 @@ spec:
   project: rustdeskServer
   source:
     repoURL: 'https://github.com/playground506/k8s-services'  # Replace with your GitHub repo URL
-    path: 'k8s'  # The directory in your repo where Kubernetes manifests are located
+    path: 'rustdeskServer'  # The directory in your repo where Kubernetes manifests are located
     targetRevision: HEAD  # Or specify a branch/tag
   destination:
     server: 'https://kubernetes.default.svc'  # In-cluster deployment
