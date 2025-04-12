@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rustdesk-server
+  labels:
+    app: rustdesk-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rustdesk-server
+  template:
+    metadata:
+      labels:
+        app: rustdesk-server
+    spec:
+      containers:
+      - name: rustdesk-server
+        image: rustdesk/rustdesk-server:latest
+        ports:
+        - containerPort: 21115
+          name: hbbs-tcp1
+        - containerPort: 21116
+          name: hbbs-tcp2
+        - containerPort: 21116
+          protocol: UDP
+          name: hbbs-udp
+        - containerPort: 21117
+          name: hbbr-tcp
+        - containerPort: 21118
+          name: hbbr-ws
+        - containerPort: 21119
+          name: hbbr-wss
+        resources:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+        # If you need persistent storage, uncomment the following:
+        # volumeMounts:
+        # - name: rustdesk-data
+        #   mountPath: /root
+      # If you need persistent storage, uncomment the following:
+      # volumes:
+      # - name: rustdesk-data
+      #   persistentVolumeClaim:
+      #     claimName: rustdesk-pvc

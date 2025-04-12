@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rustdesk-server
+  labels:
+    app: rustdesk-server
+spec:
+  type: ClusterIP  # You might want to use NodePort or ClusterIP depending on your setup
+  ports:
+  - port: 21115
+    targetPort: 21115
+    protocol: TCP
+    name: hbbs-tcp1
+  - port: 21116
+    targetPort: 21116
+    protocol: TCP
+    name: hbbs-tcp2
+  - port: 21116
+    targetPort: 21116
+    protocol: UDP
+    name: hbbs-udp
+  - port: 21117
+    targetPort: 21117
+    protocol: TCP
+    name: hbbr-tcp
+  - port: 21118
+    targetPort: 21118
+    protocol: TCP
+    name: hbbr-ws
+  - port: 21119
+    targetPort: 21119
+    protocol: TCP
+    name: hbbr-wss
+  selector:
+    app: rustdesk-server
