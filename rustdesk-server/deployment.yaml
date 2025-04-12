@@ -2,6 +2,7 @@ apiVersion: rustdesk/v1alpha1
 kind: Deployment
 metadata:
   name: rustdesk-server
+  namespace: rustdesk-server
   labels:
     app: rustdesk-server
 spec:
