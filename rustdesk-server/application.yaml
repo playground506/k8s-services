@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rustdesk-server
+  namespace: argocd  # This must be the namespace where Argo CD is installed
+spec:
+  project: rustdesk-server  # This project must exist in Argo CD
+  source:
+    repoURL: https://github.com/playground506/k8s-services
+    path: rustdesk-server
+    targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: rustdesk-server
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
